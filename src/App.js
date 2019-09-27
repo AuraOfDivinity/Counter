@@ -1,26 +1,42 @@
-import React from 'react';
+import React, { useState } from 'react';
 import IncrementByButton from './components/IncrementByButton.js'
 import './App.css';
 import 'semantic-ui-css/semantic.min.css'
-import { Grid, Image } from 'semantic-ui-react'
+import { Grid, Image, GridColumn, GridRow, Card } from 'semantic-ui-react'
 
 function App() {
-  let count = 0
+  const [count, setCount] = useState(0)
 
   const incrementCount = incrementAmount =>{
-    console.log(count += incrementAmount)
+    setCount(count + incrementAmount)
   }
   return (
     <div className="App">
       <div>
 
       </div>
-      <div id ="ButtonDiv">
-        <IncrementByButton increment = {1} color='green' onClickHandler={incrementCount} ></IncrementByButton>
-        <IncrementByButton increment = {10} color='olive' onClickHandler={incrementCount}></IncrementByButton>
-        <IncrementByButton increment = {100} color='yellow' onClickHandler={incrementCount}></IncrementByButton>
-        <IncrementByButton increment = {1000} color='orange' onClickHandler={incrementCount}></IncrementByButton>
-      </div>
+      <Grid columns={16} >
+        <GridRow centered>
+          <GridColumn>
+            <IncrementByButton increment = {1} color='green' onClickHandler={incrementCount} ></IncrementByButton>
+          </GridColumn>
+          <GridColumn>
+            <IncrementByButton increment = {10} color='olive' onClickHandler={incrementCount}></IncrementByButton>
+          </GridColumn>
+          <GridColumn>
+            <IncrementByButton increment = {100} color='yellow' onClickHandler={incrementCount}></IncrementByButton>
+          </GridColumn>
+          <GridColumn>
+            <IncrementByButton increment = {1000} color='orange' onClickHandler={incrementCount}></IncrementByButton>
+          </GridColumn>
+          </GridRow>
+          <GridRow centered>
+            <Card>
+              <Card.Content header='Display' centered/>
+              <Card.Content description={count} />
+            </Card>
+          </GridRow>
+      </Grid>
     </div>
   );
 }
