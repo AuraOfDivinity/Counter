@@ -1,24 +1,26 @@
 import React from 'react';
-import logo from './logo.svg';
+import IncrementByButton from './components/IncrementByButton.js'
 import './App.css';
+import 'semantic-ui-css/semantic.min.css'
+import { Grid, Image } from 'semantic-ui-react'
 
 function App() {
+  let count = 0
+
+  const incrementCount = incrementAmount =>{
+    console.log(count += incrementAmount)
+  }
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div>
+
+      </div>
+      <div id ="ButtonDiv">
+        <IncrementByButton increment = {1} color='green' onClickHandler={incrementCount} ></IncrementByButton>
+        <IncrementByButton increment = {10} color='olive' onClickHandler={incrementCount}></IncrementByButton>
+        <IncrementByButton increment = {100} color='yellow' onClickHandler={incrementCount}></IncrementByButton>
+        <IncrementByButton increment = {1000} color='orange' onClickHandler={incrementCount}></IncrementByButton>
+      </div>
     </div>
   );
 }
